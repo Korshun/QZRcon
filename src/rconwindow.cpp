@@ -353,9 +353,9 @@ void RconWindow::onMessage(QString message)
         ui->tmplog->insertHtml(messagetime + message + nextline);
 
     /* Process chat sound */
-    if (((chatsound == NULL) || (chatsound == "")) && (ui->actionPlay_chat_sound->isChecked()))
+    if (!chatsound.isEmpty() && (ui->actionPlay_chat_sound->isChecked()))
         qDebug() << "Couldn't open sound file: chat sound path is not set!";
-    else if((!QSound::isAvailable()) && (ui->actionPlay_chat_sound->isChecked()))
+    else if(ui->actionPlay_chat_sound->isChecked())
         qDebug() << chatsound << "Couldn't open sound device!";
     else if(ui->actionPlay_chat_sound->isChecked()) QSound::play(chatsound);
 }
