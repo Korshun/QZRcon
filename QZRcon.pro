@@ -6,6 +6,8 @@
 
 QT       += core gui network
 
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets multimedia
+
 TARGET = QZRcon
 TEMPLATE = app
 RC_FILE = qzrcon.rc
