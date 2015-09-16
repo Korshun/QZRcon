@@ -30,7 +30,7 @@ QString logautosavepath; // log path
 /* Global color tags */
 QSettings *ctagsettings = NULL;
 
-QString defcolor = "000000"; // default color (black)
+const QString defcolor = "000000"; // default color (black)
 /* ----------------------------------------------- */
 
 RconWindow::RconWindow(QWidget *parent, Rcon *rcon) :
@@ -299,7 +299,7 @@ void RconWindow::onServerLogReceived(QString message)
 void RconWindow::onMessage(QString message)
 {
     /* Lines with this string will be ignored */
-    QString ignorem = "(RCON by ";
+    const QString ignorem = "(RCON by ";
 
     /* Current date */
     QDateTime time;
@@ -412,9 +412,9 @@ void RconWindow::send()
     QString nickname = ui->lineNickname->text();
 
     /* The first symbols */
-    QString cmdstring = "/";
-    QString chatstring = ":";
-    QString mestring = "me";
+    const QString cmdstring = "/";
+    const QString chatstring = ":";
+    const QString mestring = "me";
 
     QString command = ui->lineCommand->text();
     if (command.isEmpty()) return;
@@ -613,7 +613,7 @@ void RconWindow::on_playerlist_itemPressed(QListWidgetItem *item)
 }
 
 /* Actions */
-QString playerlistwarn = "You must select player in playerlist!";
+const QString playerlistwarn = "You must select player in playerlist!";
 
 void RconWindow::on_actionKick_player_triggered()
 {
