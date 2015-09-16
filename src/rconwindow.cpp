@@ -332,7 +332,7 @@ void RconWindow::onMessage(QString message)
     /* Show message */
     if (message.lastIndexOf(ignorem) < 0)
     {
-        ui->log->insertHtml(messagetime + message + nextline);
+        ui->log->setHtml(ui->log->toHtml() + messagetime + message);
         if(ui->actionMove_cursor_to_end_on_message->isChecked())
             ui->log->moveCursor(QTextCursor::End);
     }
@@ -340,17 +340,17 @@ void RconWindow::onMessage(QString message)
     /* Print log messages? */
     if ((message.lastIndexOf(ignorem) > 0) && (!ui->actionRemove_log_messages->isChecked()))
     {
-        ui->log->insertHtml(messagetime + message + nextline);
+        ui->log->setHtml(ui->log->toHtml() + messagetime + message);
         if(ui->actionMove_cursor_to_end_on_message->isChecked())
             ui->log->moveCursor(QTextCursor::End);
     }
 
     /* Save messages to another place for log autosaving */
     if (message.lastIndexOf(ignorem) < 0)
-        ui->tmplog->insertHtml(messagetime + message + nextline);
+        ui->tmplog->setHtml(ui->tmplog->toHtml() + messagetime + message);
 
     if ((message.lastIndexOf(ignorem) > 0) && (!ui->actionRemove_log_messages->isChecked()))
-        ui->tmplog->insertHtml(messagetime + message + nextline);
+        ui->tmplog->setHtml(ui->tmplog->toHtml() + messagetime + message);
 
     /* Process chat sound */
     if (!chatsound.isEmpty() && (ui->actionPlay_chat_sound->isChecked()))
