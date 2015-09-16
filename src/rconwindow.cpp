@@ -353,11 +353,13 @@ void RconWindow::onMessage(QString message)
         ui->tmplog->setHtml(ui->tmplog->toHtml() + messagetime + message);
 
     /* Process chat sound */
-    if (!chatsound.isEmpty() && (ui->actionPlay_chat_sound->isChecked()))
-        qDebug() << "Couldn't open sound file: chat sound path is not set!";
-    else if(ui->actionPlay_chat_sound->isChecked())
-        qDebug() << chatsound << "Couldn't open sound device!";
-    else if(ui->actionPlay_chat_sound->isChecked()) QSound::play(chatsound);
+    if (ui->actionPlay_chat_sound->isChecked())
+    {
+        if (chatsound.isEmpty())
+            qDebug() << "Couldn't open sound file: chat sound path is not set!";
+        else
+            QSound::play(chatsound);
+    }
 }
 
 /* Receive a mapname */
